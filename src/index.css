@@ -16,3 +16,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+.App{
+  display: flex;
+  flex-direction: column;
+  /* width: 90%; */
+  align-items: center;
+}
+
+h1{
+  text-align: center;
+}
+
+.data-container{
+  margin: 2em;
+  width: 90%;
+  height: 30vh;
+  background-color: rgb(229, 229, 229);
+}
+
+button{
+  width: 50px;
+  padding: .25em;
+}
