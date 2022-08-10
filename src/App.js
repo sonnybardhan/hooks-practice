@@ -1,23 +1,18 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
   const [task, setTask] = useState('');
-
-  const [tasks, setTasks] = useState(() =>
-    JSON.parse(localStorage.getItem('myTasks'))
-  );
-
-  useEffect(() => {
-    console.log('running');
-    localStorage.setItem('myTasks', JSON.stringify(tasks));
-  }, [tasks]);
+  const [getTasks, saveTasks] = useLocalStorage('myTasks');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTasks([...tasks, task]);
+    saveTasks([...getTasks, task]);
     setTask('');
   };
+
+  console.log(getTasks);
 
   return (
     <div className='App'>
@@ -33,7 +28,8 @@ function App() {
         </form>
       </div>
       <div className='tasks-container'>
-        {tasks && tasks.map((task) => <li key={Math.random()}>{task}</li>)}
+        {getTasks &&
+          getTasks.map((task) => <li key={Math.random()}>{task}</li>)}
       </div>
     </div>
   );
