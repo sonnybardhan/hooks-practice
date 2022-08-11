@@ -16,6 +16,7 @@ const fetchData = () => {
 
 function App() {
   const { execute, status, error, value } = useAsync(fetchData, false);
+  // const { execute, status, error, value } = useAsync(fetchData);
 
   return (
     <div className='App'>
